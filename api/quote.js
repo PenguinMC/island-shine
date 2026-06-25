@@ -7,9 +7,9 @@ module.exports = async (req, res) => {
     res.status(405).json({ error: 'Method not allowed' });
     return;
   }
-  const key = process.env.RESEND_API_KEY;
+  const key = process.env.RESEND_API_KEY || process.env.ISLANDSHINE || process.env.islandshine || process.env.ISLAND_SHINE;
   if (!key) {
-    res.status(500).json({ error: 'Email not configured (missing RESEND_API_KEY)' });
+    res.status(500).json({ error: 'Email not configured (missing API key env var)' });
     return;
   }
 
