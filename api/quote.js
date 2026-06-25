@@ -27,7 +27,7 @@ module.exports = async (req, res) => {
   if (!name && !phone && !email) { res.status(400).json({ error: 'Missing required fields' }); return; }
 
   const admins = (process.env.TO_EMAILS || ADMINS_DEFAULT).split(',').map((s) => s.trim()).filter(Boolean);
-  const from = process.env.FROM_EMAIL || 'Island Shine <onboarding@resend.dev>';
+  const from = process.env.FROM_EMAIL || 'Island Shine <quotes@islandshines.com>';
 
   const send = (to, subject, html, replyTo) => fetch('https://api.resend.com/emails', {
     method: 'POST',
